@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Seeing the Unseen – Hong Kong and Systemic Racism</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family:"Merriweather",serif;
+  background:#fbfbfb;
+  color:#222;
+  line-height:1.6;
+  font-size:clamp(.95rem,1.2vw,1.1rem);
+}
+a{color:#b71c1c;text-decoration:none;}
+a:hover{text-decoration:underline;}
+.container{
+  width:min(90%,70rem);
+  margin-inline:auto;
+  padding-inline:1rem;      /* ensures text never hits browser edge */
+}
+
+/* ---------- NAVBAR ---------- */
+nav{
+  background:#111;color:#fff;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1rem 5vw;position:relative;
+}
+nav .logo{
+  font-family:"Playfair Display",serif;
+  font-weight:700;font-size:clamp(1.1rem,2vw,1.4rem);
+}
+nav ul{
+  list-style:none;display:flex;gap:1.2em;margin:0;padding:0;
+  align-items:center;
+}
+nav ul li a{color:#fff;font-size:clamp(.9rem,1.2vw,1rem);}
+nav ul li a:hover{color:#ffccbc;}
+.menu-toggle{display:none;flex-direction:column;width:2rem;height:1.5rem;justify-content:space-between;cursor:pointer;}
+.bar{height:.25rem;width:100%;background:#fff;border-radius:2px;transition:all .3s;}
+@media(max-width:640px){
+  nav ul{
+    flex-direction:column;position:absolute;top:100%;left:0;right:0;
+    background:#111;overflow:hidden;max-height:0;transition:max-height .3s;
+  }
+  nav ul.open{max-height:500px;}
+  .menu-toggle{display:flex;}
+}
+
+/* ---------- HEADER ---------- */
+header{
+  background:linear-gradient(to right,#b71c1c,#e53935);
+  color:#fff;text-align:center;
+  padding:clamp(2rem,6vw,4rem) 1rem;
+}
+header h1{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(1.6rem,4vw,2.4rem);
+  margin-bottom:.4em;
+}
+header p{font-style:italic;font-size:clamp(1rem,2vw,1.2rem);opacity:.9;}
+
+/* ---------- MAIN (EDITORIAL) ---------- */
+main{padding-block:clamp(2rem,5vw,3rem);}
+main p{text-align:justify;margin-bottom:1.3em;}
+main h2{
+  font-family:"Playfair Display",serif;
+  color:#b71c1c;
+  font-size:clamp(1.2rem,2.2vw,1.6rem);
+  margin-top:2.2em;margin-bottom:.6em;
+}
+main h2::after{
+  content:"";display:block;height:.2rem;width:3rem;background:#b71c1c;
+  margin-top:.3em;
+}
+main p:first-of-type::first-letter{
+  float:left;color:#b71c1c;font-family:"Playfair Display",serif;
+  font-size:clamp(2.5rem,4vw,3rem);
+  line-height:.95;font-weight:700;margin-right:.25em;
+}
+blockquote{
+  border-left:.3rem solid #b71c1c;
+  margin:1.5em 0;padding-left:1em;
+  background:#fff3f3;font-style:italic;color:#444;
+}
+
+/* ---------- ORGANIZATIONS ---------- */
+#organizations{
+  background:#fff6f6;border-block:2px solid #b71c1c;
+  padding:clamp(2rem,6vw,4rem) 1rem;margin-top:3rem;
+}
+#organizations h2{text-align:center;margin-bottom:2rem;}
+.org-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+  gap:1.5rem;
+}
+.org-card{
+  display:flex;flex-direction:column;justify-content:flex-start;
+  background:#fff;border-radius:.5em;
+  box-shadow:0 0.3em 0.4em rgba(0,0,0,.1);
+  padding:1.4rem;transition:.25s ease;
+  word-break:break-word;
+}
+.org-card:hover{
+  transform:translateY(-0.2em);
+  box-shadow:0 0.4em 0.8em rgba(0,0,0,.15);
+}
+.org-card h3{
+  font-family:"Playfair Display",serif;color:#b71c1c;
+  font-size:clamp(1rem,1.8vw,1.2rem);margin-bottom:.4em;
+}
+.org-card p{margin:0;font-size:clamp(.9rem,1.3vw,1rem);}
+@media (min-width:640px){
+  .org-grid{align-items:start;}
+  .org-card{height:100%;}
+}
+
+/* ---------- FIXED ABOUT & CONTACT ---------- */
+section.container{
+  margin-top:clamp(2rem,4vw,3rem);
+  text-align:justify;
+  overflow-wrap:break-word;
+  word-break:normal;
+}
+section.container h2{
+  font-family:"Playfair Display",serif;
+  color:#b71c1c;
+  font-size:clamp(1.2rem,2.2vw,1.6rem);
+  text-align:left;
+  margin-bottom:.6em;
+}
+section.container h2::after{
+  content:"";display:block;height:.2rem;width:3rem;background:#b71c1c;margin-top:.3em;
+}
+
+/* ---------- FOOTER ---------- */
+footer{
+  background:#111;color:#ddd;text-align:center;
+  padding-block:2em;font-size:clamp(.85rem,1.2vw,.95rem);
+}
+footer a{color:#ffccbc;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Voices of Equality</div>
+  <div class="menu-toggle" id="menu-toggle">
+    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+  </div>
+  <ul id="nav-links">
+    <li><a href="#editorial">Editorial</a></li>
+    <li><a href="#organizations">Organizations</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<header>
+  <div class="container">
+    <h1>Seeing the Unseen – Why Hong Kong Must Confront Every Form of Racism</h1>
+    <p>An Editorial Advocating Awareness of Systemic Inequality</p>
+  </div>
+</header>
+
+<main id="editorial" class="container">
+  <p>In a city that prides itself on its skyline, efficiency, and global connectivity, it is easy to believe that progress naturally ensures equality. Yet beneath Hong Kong’s modern surface lies a hierarchy of belonging that quietly determines who feels seen, who gets opportunities, and who remains invisible. Racism in Hong Kong may rarely erupt in the explosive forms seen elsewhere, but it thrives in silence, in everyday systems, and in the fine print of policies. It is, in every sense, <strong>systemic</strong> — embedded within education, employment, labor laws, and even cultural imagination.</p>
+
+  <h2>Language as a Gatekeeper</h2>
+  <p>For many ethnic minority students, the path to success begins with an unfair obstacle: language. Chinese‑medium schooling remains the default, yet there is no consistent, well‑resourced Chinese‑as‑a‑Second‑Language (CSL) curriculum. Children from South Asian and African backgrounds often grow up fluent in English but unable to satisfy rigid Cantonese or Mandarin requirements. The result is segregation in education, limited career paths, and a lasting sense of exclusion. Language, intended as a bridge, has become one of Hong Kong’s most persistent barriers.</p>
+
+  <h2>The Market of Exclusion</h2>
+  <p>Racism in employment often hides behind the politically convenient phrase “Cantonese required.” Even when jobs are international or service‑based, unnecessary language conditions filter out qualified non‑Chinese candidates. In housing, families still encounter subtle forms of discrimination — unanswered calls, abrupt “availability changes,” or landlords “preferring locals.” The prejudice is rarely shouted; it is simply built in.</p>
+  <blockquote>“A city that shuts out talent based on ethnicity or accent denies itself creativity, productivity, and global competitiveness.”</blockquote>
+  <p>This is not only unjust but self‑defeating. Hong Kong cannot thrive as a world city if equal opportunity remains a slogan rather than a structure.</p>
+
+  <h2>Invisible Caregivers</h2>
+  <p>No discussion of racism in Hong Kong is complete without acknowledging the migrant domestic workers who sustain its households. Every Sunday, women from the Philippines and Indonesia gather in the public spaces of Central, not out of tradition but necessity. The <em>live‑in rule</em>, low wages, and restricted mobility reduce them to a subordinate class — simultaneously indispensable and invisible. These women care for Hong Kong’s children and elderly yet rarely receive the dignity, privacy, or policy protection they deserve. Their exploitation is normalized through bureaucracy, not open hostility — another silent face of systemic racism.</p>
+
+  <h2>Refugees Without Refuge</h2>
+  <p>Refugees and asylum seekers live within perhaps the clearest form of exclusion. Legally barred from working and accepted in only a fraction of cases, they survive in prolonged limbo. Labels like “illegal” or “bogus” are carelessly applied, turning human lives into administrative inconveniences. These individuals did not choose displacement, yet the system treats them as if they did. A city built by migrants should understand displacement better than this.</p>
+
+  <h2>Changing the Cultural Mirror</h2>
+  <p>Racism also persists in culture and media representation. When minorities appear on screen, they are often caricatured: the helper, the outsider, the troublemaker. Rarely are their stories depicted as complex, local, or equally entitled to belonging. Structural change depends not only on rewriting laws but also on rewriting narratives.</p>
+
+  <h2>An Issue of Shared Responsibility</h2>
+  <p>The comforting myth is that racism is someone else’s problem — something that happens “overseas.” But when a Nepali student cannot enter a mainstream university because of language restrictions, or when a domestic worker cannot live outside her employer’s home, that is Hong Kong’s problem. Racism is not about intention or malice; it is about <strong>impact</strong>. Silence, indifference, and uncritical policy design are its strongest allies.</p>
+
+  <h2>Choosing Awareness and Action</h2>
+  <p>Awareness is not performative. It begins when we recognize that structural barriers — not individual flaws — are the problem. Employers must examine recruitment biases. Schools must implement genuine language inclusion. Policymakers must expand the Race Discrimination Ordinance to cover all public functions. Media must reflect the full human diversity of the city they claim to represent.</p>
+  <p>These steps are not idealistic; they are necessary. A city that calls itself international cannot treat equality as optional.</p>
+
+  <p>Hong Kong’s motto may be efficiency, but its soul should be empathy. Awareness of racism — from classrooms to kitchens to courtrooms — is not an attack on identity; it is a commitment to improve it. Only when we choose to see every face as fully belonging will Hong Kong truly live up to its promise.</p>
+</main>
+
+<section id="organizations">
+  <div class="container">
+    <h2>Organizations & Get Involved</h2>
+    <div class="org-grid">
+      <div class="org-card"><h3><a href="https://www.eoc.org.hk" target="_blank">Equal Opportunities Commission (EOC)</a></h3><p>Hong Kong’s statutory body enforcing the Race Discrimination Ordinance and promoting equality through research, education, and policy reform.</p></div>
+      <div class="org-card"><h3><a href="https://www.unison.org.hk" target="_blank">Hong Kong Unison</a></h3><p>Advocates for education equity, language inclusion, and youth empowerment for ethnic minorities through policy and community engagement.</p></div>
+      <div class="org-card"><h3><a href="https://www.zubinfoundation.org" target="_blank">The Zubin Foundation</a></h3><p>Conducts community programs and research to advance racial inclusion, mental health, and gender equality in Hong Kong.</p></div>
+      <div class="org-card"><h3><a href="https://www.justicecentre.org.hk" target="_blank">Justice Centre Hong Kong</a></h3><p>Provides legal aid and advocacy for refugees, asylum seekers, and trafficking victims in pursuit of protection and justice.</p></div>
+      <div class="org-card"><h3><a href="https://www.christian-action.org.hk" target="_blank">Christian Action – Centre for Refugees</a></h3><p>Delivers humanitarian relief, education, and training to refugees and migrants, fostering community and independence.</p></div>
+      <div class="org-card"><h3><a href="https://www.facebook.com/MWUSolidarityHK/" target="_blank">Migrant Workers’ Union (MWU)</a></h3><p>Grass‑roots union supporting foreign domestic workers through collective action, education, and fair labor advocacy.</p></div>
+      <div class="org-card"><h3><a href="https://www.ohchr.org/en/treaty-bodies/cerd" target="_blank">UN Committee on the Elimination of Racial Discrimination (CERD)</a></h3><p>Monitors governments’ commitments to eliminate racial discrimination globally, offering guidance on inclusive policy frameworks.</p></div>
+      <div class="org-card"><h3><a href="https://www.amnesty.org/en/location/asia-and-the-pacific/east-asia/" target="_blank">Amnesty International – East Asia Office</a></h3><p>Documents human‑rights violations and campaigns against racial and social discrimination throughout East Asia.</p></div>
+      <div class="org-card"><h3><a href="https://minorityrights.org" target="_blank">Minority Rights Group International</a></h3><p>Global NGO advocating for minority and indigenous rights through training, research, and policy influence worldwide.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="container">
+  <h2>About This Project</h2>
+  <p>
+    This website was created to raise awareness of systemic racism in Hong Kong and encourage inclusive education, policy change, and empathy‑based dialogue. It aims to build understanding through data, storytelling, and community collaboration toward a more equitable city.
+  </p>
+</section>
+
+<footer>
+  © 2025 Voices of Equality · Educational Publication · <a href="#editorial">Back to Top</a>
+</footer>
+
+<script>
+const toggle=document.getElementById('menu-toggle');
+const navLinks=document.getElementById('nav-links');
+toggle.addEventListener('click',()=>{navLinks.classList.toggle('open');});
+</script>
+
+</body>
+</html>
